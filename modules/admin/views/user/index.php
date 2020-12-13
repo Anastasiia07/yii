@@ -30,11 +30,22 @@ $this->params['breadcrumbs'][] = $this->title;
             'name',
             'login',
             'password',
-            'image',
+            [
+
+                'format' => 'html',
+
+                'label' => 'Image',
+
+                'value' => function($data){
+
+                    return Html::img($data->getImage(), ['width'=>200]);
+
+                }
+
+            ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
-
 
 </div>

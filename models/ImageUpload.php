@@ -37,7 +37,7 @@ class ImageUpload extends Model{
 
     private function getFolder()
     {
-        return Yii::getAlias('@web') . 'web/uploads/';
+        return Yii::getAlias('@web') . 'uploads/';
     }
 
     private function generateFilename()

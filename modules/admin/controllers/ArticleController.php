@@ -3,6 +3,7 @@
 namespace app\modules\admin\controllers;
 
 use app\models\ImageUpload;
+use Codeception\PHPUnit\Constraint\Page;
 use Yii;
 use app\models\Article;
 use app\models\ArticleSearch;
@@ -59,15 +60,25 @@ class ArticleController extends Controller
             'model' => $this->findModel($id),
         ]);
     }
-    public function actionSetImage()
+
+    public function actionSetImage($id)
     {
         $model = new ImageUpload;
-        if(Yii::$app->request->isPost){
-            $file = UploadedFile::getInstance($model,'image');
-            $model->uploadFile($file);
+
+        if (Yii::$app->request->isPost)
+        {
+            $article = $this->findModel($id);
+            $file = UploadedFile::getInstance($model, 'image');
+
+            if($article->saveImage($model->uploadFile($file, $article->image)))
+            {
+                return $this->redirect(['view', 'id'=>$article->id]);
+            }
         }
+
         return $this->render('image', ['model'=>$model]);
     }
+
     /**
      * Creates a new Article model.
      * If creation is successful, the browser will be redirected to the 'view' page.
@@ -114,11 +125,11 @@ class ArticleController extends Controller
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionDelete($id)
-    {
-        $this->findModel($id)->delete();
+{
+    $this->findModel($id)->delete();
 
-        return $this->redirect(['index']);
-    }
+    return $this->redirect(['index']);
+}
 
     /**
      * Finds the Article model based on its primary key value.

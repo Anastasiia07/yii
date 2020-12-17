@@ -3,7 +3,7 @@
 namespace app\models;
 use yii\web\IdentityInterface;
 use Yii;
-
+use yii\filters\AccessControl;
 /**
  * This is the model class for table "user".
  *
@@ -196,4 +196,37 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
         return Yii::$app->formatter->asDate($this->date);
     }
 
+
+    public function behaviors()
+    {
+
+        return [
+
+            'access' => [
+
+                'class' => AccessControl::className(),
+
+                'denyCallback' => function ($rule, $action) {
+
+                    throw new \yii\web\NotFoundHttpException();
+
+                },
+
+                'rules' => [
+
+                    [
+
+                        'allow' => true,
+
+                        'matchCallback' => function ($rule, $action) {
+
+                            return !Yii::$app->user->isGuest;}
+                    ]
+
+                ]
+
+            ]
+
+        ];
+    }
 }

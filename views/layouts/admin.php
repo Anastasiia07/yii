@@ -44,10 +44,10 @@ AppAsset::register($this);
             ['label' => 'Comments', 'url' => ['/admin/comment']],
             ['label' => 'Topic', 'url' => ['/admin/topic']],
             Yii::$app->user->isGuest ? (
-                ['label' => 'Login', 'url' => ['/admin/auth/login']]
+                ['label' => 'Login', 'url' => ['/auth/login']]
             ) : (
                 '<li>'
-                . Html::beginForm(['admin/auth/logout'], 'post')
+                . Html::beginForm(['/auth/logout'], 'post')
                 . Html::submitButton(
                     'Logout (' . Yii::$app->user->identity->username . ')',
                     ['class' => 'btn btn-link logout']

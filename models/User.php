@@ -190,4 +190,10 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     {
         return $this->save(false);
     }
+
+    public function getDate()
+    {
+        return Yii::$app->formatter->asDate($this->date);
+    }
+
 }

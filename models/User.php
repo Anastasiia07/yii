@@ -184,4 +184,10 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     {
         return $this->name;
     }
+
+
+    public function create()
+    {
+        return $this->save(false);
+    }
 }

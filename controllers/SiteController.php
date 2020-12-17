@@ -11,7 +11,7 @@ use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\EntryForm;
 use app\models\Article;
-
+use app\models\Topic;
 use yii\data\Pagination;
 
 class SiteController extends Controller
@@ -70,6 +70,11 @@ class SiteController extends Controller
 // build a DB query to get all articles
 
         $query = Article::find();
+        $popular = Article::find()->orderBy('viewed desc')->limit(3)->all();
+
+        $recent = Article::find()->orderBy('date desc')->limit(3)->all();
+
+        $topics = Topic::find()->all();
 
 // get the total number of articles (but do not fetch the article data yet)
 
@@ -91,7 +96,10 @@ class SiteController extends Controller
 
             'articles'=>$articles,
 
-            'pagination'=>$pagination
+            'pagination'=>$pagination,
+            'popular' => $popular,
+            'recent' => $recent,
+            'topics' => $topics
 
         ]);
 
@@ -158,9 +166,9 @@ class SiteController extends Controller
     {
         return $this->render('about');
     }
-	
-	
-	  public function actionEntry()
+
+
+    public function actionEntry()
     {
         $model = new EntryForm();
 
@@ -168,7 +176,7 @@ class SiteController extends Controller
             // дані в $model успішно перевірені
 
             // тут робимо щось корисне з $model ...
- 
+
             return $this->render('entry-confirm', ['model' => $model]);
         } else {
             // або сторінка відображається вперше, або ж є помилка в даних
@@ -182,4 +190,3 @@ class SiteController extends Controller
         return $this->render('single');
     }
 }
-

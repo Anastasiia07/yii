@@ -186,7 +186,7 @@ class SiteController extends Controller
         });
 
         $commentForm = new CommentForm();
-
+        $article->viewedCounter();
         return $this->render('single', [
 
             'article' => $article,

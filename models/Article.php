@@ -140,4 +140,14 @@ class Article extends \yii\db\ActiveRecord
         return $this->save();
 
     }
+
+    public function viewedCounter()
+    {
+
+        $this->viewed +=1;
+
+        return $this->save(false);
+
+    }
+
 }

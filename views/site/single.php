@@ -339,62 +339,6 @@ use yii\helpers\Url;
 
     <?php endif; ?>
 
-            <div class="comment-childs-container">
-
-                <div class="comment-childs">
-
-                    <div class="comment-block">
-
-                        <div class="comment">
-
-                            <a href="#" class="comment-img">
-
-                                <img class="img-round" src=""
-
-                                     alt="image">
-
-                            </a>
-
-                            <div class="comment-body">
-
-                                <div class="comment-top">
-
-                                    <h5>Stas</h5>
-
-                                    <p class="comment-date">
-
-                                        2020-08-09
-
-                                    </p>
-
-                                </div>
-
-                                <div class="comment-text">
-
-                                    Text
-
-                                </div>
-
-                                <div class="comment-delete">
-
-                                    <button type="submit">
-
-                                        <i class="fa fa-trash"></i>
-
-                                    </button>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
         </div>
 
     </div>

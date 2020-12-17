@@ -79,6 +79,7 @@ class ArticleController extends Controller
         return $this->render('image', ['model'=>$model]);
     }
 
+
     /**
      * Creates a new Article model.
      * If creation is successful, the browser will be redirected to the 'view' page.

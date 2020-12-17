@@ -5,6 +5,7 @@ namespace app\modules\user\controllers;
 use Yii;
 use app\models\Article;
 use app\models\ArticleSearch;
+use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -160,4 +161,5 @@ class ArticleController extends Controller
 
         return $this->render('image', ['model'=>$model]);
     }
+
 }

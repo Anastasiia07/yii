@@ -1,5 +1,5 @@
 <?php
-
+use app\models\Topic;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -23,8 +23,6 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'tag')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'viewed')->textInput() ?>
-
-    <?= $form->field($model, 'topic_id')->dropDownList($topics) ?>
 
 
     <div class="form-group">

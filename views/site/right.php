@@ -1,49 +1,7 @@
 <?php use yii\helpers\Url;
 use app\models\SearchForm;
 ?>
-<div class="col-md-4" data-sticky_column>
-
-    <div class="primary-sidebar">
-        <aside class="border pos-padding widget-search">
-
-            <?php $form = \yii\widgets\ActiveForm::begin([
-
-                'method' => 'get',
-
-                'action' => Url::to(['/search']),
-
-                'options' => ['class' => 'search-form', 'role' => 'form']]) ?>
-
-            <?php $searchForm = new \app\models\SearchForm() ?>
-
-            <?= $form->field($searchForm, 'text')->textInput(['class' => 'form-control serch', 'placeholder' => 'Search'])->label(false) ?>
-
-            <button class="btn-serch" type="submit"><i class="fa fa-search"></i></button>
-
-            <?php \yii\widgets\ActiveForm::end() ?>
-
-        </aside>
-        <aside class="widget">
-            <h3 class="widget-title text-uppercase text-center">Popular Posts</h3>
-            <?php
-
-            foreach($popular as $article):?>
-                <div class="popular-post">
-                    <a href="<?= Url::toRoute(['site/view','id'=>$article->id]);?>" class="popular-img">
-                        <img class="img-sideBar" src="<?= $article->getImage();?>" alt="">
-
-                        <div class="p-overlay"></div>
-                    </a>
-
-                    <div class="p-content">
-                        <a href="<?= Url::toRoute(['site/view','id'=>$article->id]);?>" class="text-uppercase"><?= $article->title?></a>
-                        <span class="p-date"><?= $article->getDate();?></span>
-
-                    </div>
-                </div>
-            <?php endforeach;?>
-
-        </aside>
+<div class="col-md-4" >
 
         <aside class="widget pos-padding">
             <h3 class="widget-title text-uppercase text-center">Recent Posts</h3>

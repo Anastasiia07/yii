@@ -5,8 +5,25 @@ use yii\helpers\Url;
 use yii\widgets\LinkPager;
 
 ?>
+<aside class="border pos-padding widget-search">
 
-    <div class="col-md-8">
+    <?php $form = \yii\widgets\ActiveForm::begin([
+
+        'method' => 'get',
+
+        'action' => Url::to(['/search']),
+
+        'options' => ['class' => 'search-form', 'role' => 'form']]) ?>
+
+    <?php $searchForm = new \app\models\SearchForm() ?>
+
+    <?= $form->field($searchForm, 'text')->textInput(['class' => 'form-control serch', 'placeholder' => 'Search'])->label(false) ?>
+
+    <button class="btn-serch" type="submit"><i class="fa fa-search"></i></button>
+
+    <?php \yii\widgets\ActiveForm::end() ?>
+
+</aside>
 
         <div style="text-align: center" >
 
@@ -16,55 +33,49 @@ use yii\widgets\LinkPager;
 
         <?php foreach ($articles as $article): ?>
 
-            <article class="post">
 
-                <div class="post-thumb">
 
-                    <a href="<?= Url::toRoute(['/view', 'id'=>$article->id]) ?>"><img class="img-index" src="<?= $article->getImage() ?>" alt=""></a>
+                <article class="post">
+                    <div class="post-content">
 
-                </div>
+                        <header class="entry-header text-center text-uppercase">
 
-                <div class="post-content">
 
-                    <header class="entry-header text-center text-uppercase">
+                            <h1 class="entry-title"><a href=""> <?= $article->title; ?> </a></h1>
 
-                        <h6><a href="<?= Url::toRoute(['/topic', 'id'=>$article->topic->id]) ?>"> <?= $article->topic->name; ?></a></h6>
+                        </header>
+                        <div class="post-thumb">
 
-                        <h1 class="entry-title"><a href="<?= Url::toRoute(['/view', 'id'=>$article->id]) ?>"><?= $article->title; ?></a></h1>
+                            <a href="<?= Url::toRoute(['site/view', 'id'=>$article->id]);?>"><img src="<?= $article->getImage();?>" alt=""></a>
 
-                    </header>
+                        </div>
+                        <div class="entry-content">
 
-                    <div class="entry-content">
 
-                        <p><?= mb_strimwidth($article->description,0, 360, "..."); ?>
+                        </div>
 
-                        </p>
+                        <div class="social-share">
 
+                            <span class="social-share-title pull-left text-capitalize">By <?= $article->user->name;?> On <?= $article->getDate();?></span>
+
+                            <ul class="text-center pull-right">
+
+                                <li><a class="s-facebook" href="#"><i class="fa fa-eye"></i></a></li>
+
+                                <?= (int)$article->viewed; ?>
+
+                            </ul>
+
+                        </div>
                         <div class="btn-continue-reading text-center text-uppercase">
 
-                            <a href="<?= Url::toRoute(['/view', 'id'=>$article->id]) ?>" class="more-link">Continue Reading</a>
+                            <a href="<?= Url::toRoute(['/view', 'id'=>$article->id]) ?>" class="more-link">Continue Reading</a><p></p>
 
                         </div>
 
                     </div>
 
-                    <div class="social-share">
-
-                        <span class="social-share-title pull-left text-capitalize">By <?= $article->user->name; ?> On <?= $article->getDate(); ?></span>
-
-                        <ul class="text-center pull-right">
-
-                            <li><a class="s-facebook" href="#"><i class="fa fa-eye"></i></a></li>
-
-                            <?= (int)$article->viewed; ?>
-
-                        </ul>
-
-                    </div>
-
-                </div>
-
-            </article>
+                </article>
 
         <?php endforeach; ?>
 
@@ -79,9 +90,3 @@ use yii\widgets\LinkPager;
         ?>
 
     </div>
-
-<?php
-
-echo \Yii::$app->view->renderFile('@app/views/site/right.php', compact('popular','recent','topics'));
-
-?>

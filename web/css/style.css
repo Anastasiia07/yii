@@ -4,9 +4,7 @@ body {
     font-family: 'Open Sans', sans-serif;
     background: #F4F4F4;
 }
-.main-content {
-    margin-top: 50px;
-}
+
 .row {
     margin-right: -15px;
     margin-left: -15px;
@@ -67,6 +65,7 @@ span, p, input {
 }
 .pagination {
     display: inline-block;
+    align-items: center;
     padding-left: 0;
     margin: 0 0 50px;
     border-radius: 4px;
@@ -166,7 +165,8 @@ span, p, input {
 
 .popular-img img {
 
-    width: 100%;
+    width: 400px;
+    height: 200px;
 
 }
 
@@ -202,7 +202,7 @@ img {
 
     font-size: 12px;
 
-    color: #333333;
+    color: greenyellow;
 
     text-decoration: none;
 
@@ -213,10 +213,21 @@ img {
     transition: all 0.44s;
 
 }
+.column {
+    float: left;
+    width: 33.33%;
+    padding: 5px;
+}
 
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+    width: 100%;
+}
 .p-content span {
 
-    color: #666666;
+    color: orangered;
 
     font-size: 12px;
 

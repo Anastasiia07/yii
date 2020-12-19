@@ -14,7 +14,7 @@ use app\models\Article;
 use app\models\Topic;
 use yii\data\Pagination;
 use app\models\Comment;
-
+use app\models\SearchForm;
 use app\models\CommentForm;
 class SiteController extends Controller
 {
@@ -289,5 +289,45 @@ class SiteController extends Controller
         }
 
     }
+
+
+    public function actionSearch()
+
+    {
+
+        $model = new SearchForm();
+
+        if (Yii::$app->request->isGet) {
+
+            $model->load(Yii::$app->request->get());
+
+            $data = $model->SearchAtricle(3);
+
+            $popular = Article::find()->orderBy('viewed desc')->limit(3)->all();
+
+            $recent = Article::find()->orderBy('date desc')->limit(3)->all();
+
+            $topics = Topic::find()->all();
+
+            return $this->render('search',[
+
+                'articles' => $data['articles'],
+
+                'pagination' => $data['pagination'],
+
+                'popular' => $popular,
+
+                'recent' => $recent,
+
+                'topics' => $topics,
+
+                'search' => $model->text
+
+            ]);
+
+        }
+
+    }
+
 
 }

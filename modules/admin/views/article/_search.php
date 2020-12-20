@@ -25,11 +25,11 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'image') ?>
 
-    <?php // echo $form->field($model, 'tag') ?>
+    <?= $form->field($model, 'tag') ?>
 
     <?php // echo $form->field($model, 'viewed') ?>
 
-    <?php // echo $form->field($model, 'topic_id') ?>
+    <?= $form->field($model, 'topic_id') ?>
 
     <?php // echo $form->field($model, 'user_id') ?>
 

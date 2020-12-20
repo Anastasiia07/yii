@@ -73,7 +73,7 @@ $this->title = 'My Yii Application';
                         <div class="btn-continue-reading text-center text-uppercase">
 
                             <a href="<?= Url::toRoute(['/view', 'id'=>$article->id]) ?>" class="more-link">Continue Reading</a>
-
+                            <p></p>
                         </div>
 
                     </div>

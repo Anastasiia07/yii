@@ -30,7 +30,7 @@ AppAsset::register($this);
     <?php
     NavBar::begin([
         'brandLabel' => 'Trips',
-        'brandUrl' =>['/admin/article'],
+        'brandUrl' =>Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
@@ -38,11 +38,15 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-            //['label' => 'Home', 'url' => ['/admin/index']],
+            ['label' => 'Home', 'url' => ['/site/index']],
             ['label' => 'User', 'url' => ['/admin/user']],
             ['label' => 'Article', 'url' => ['/admin/article']],
             ['label' => 'Comments', 'url' => ['/admin/comment']],
             ['label' => 'Topic', 'url' => ['/admin/topic']],
+            ['label' => 'My profile', 'url' => ['/user/user'],
+                'visible' => !Yii::$app->user->isGuest],
+            ['label' => 'My articles', 'url' => ['/user/article'],
+                'visible' => !Yii::$app->user->isGuest],
             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/auth/login']]
             ) : (

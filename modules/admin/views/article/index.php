@@ -37,7 +37,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     return Html::img($data->getImage(), ['width'=>200]);
                 }
             ],
-            //'tag',
+            'tag',
             //'viewed',
             //'topic_id',
             //'user_id',

@@ -88,13 +88,13 @@ class ArticleController extends Controller
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionUpdate($id)
-    {
+    { $this->check($id);
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
-        $this->check($id);
+
         return $this->render('update', [
             'model' => $model,
         ]);
@@ -108,9 +108,9 @@ class ArticleController extends Controller
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionDelete($id)
-    {
+    {$this->check($id);
         $this->findModel($id)->delete();
-        $this->check($id);
+
         return $this->redirect(['index']);
     }
 

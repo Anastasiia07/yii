@@ -16,7 +16,7 @@ use yii\helpers\Url;
 
         </div>
         <div class="entry-content">
-
+            <p></p>
             <p> <?= mb_strimwidth($article->description,0, 360, "..."); ?> </p>
 
 
@@ -24,36 +24,17 @@ use yii\helpers\Url;
 
                 <span class="social-share-title pull-left text-capitalize">By <?= $article->user->name; ?> On <?= $article->getDate(); ?></span>
 
-                <ul class="text-center pull-right">
-
-                    <li><a class="s-facebook"
-
-                           href="https://www.facebook.com/sharer/sharer.php?u=[URL]"><i
-
-                                class="fa fa-facebook"></i></a></li>
-
-                    <li><a class="s-twitter" href="https://twitter.com/share?url=[URL]&text=[TITLE]"><i
-
-                                class="fa fa-twitter"></i></a></li>
-
-                    <li><a class="s-google-plus" href="https://plus.google.com/share?url=[URL]"><i
-
-                                class="fa fa-google-plus"></i></a></li>
-
-                </ul>
-
             </div>
 
         </div>
-        <div class="decoration">
+
 
             <?php foreach (preg_split("/[\s,]+/", $article->tag) as $tag): ?>
 
-                <a href="/search?SearchForm[text]=<?= str_replace('#', '', $tag) ?>"><?= $tag ?></a><p></p>
+                <a href="/search?SearchForm[text]=<?= str_replace('#', '', $tag) ?>">#<?= $tag ?></a><p></p>
 
             <?php endforeach; ?>
 
-        </div>
     </article>
 
 

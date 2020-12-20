@@ -86,13 +86,13 @@ class UserController extends Controller
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionUpdate($id)
-    {
+    { $this->check($id);
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
-        $this->check($id);
+
         return $this->render('update', [
             'model' => $model,
         ]);
@@ -106,9 +106,9 @@ class UserController extends Controller
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionDelete($id)
-    {
+    {$this->check($id);
         $this->findModel($id)->delete();
-        $this->check($id);
+
         return $this->redirect(['index']);
     }
 
@@ -130,17 +130,16 @@ class UserController extends Controller
 
     public function check($id){
 
-        $model1 = $this->findModel($id);
+    $model1 = $this->findModel($id);
 
-        if ($model1->id != Yii::$app->user->id){
+    if ($model1->id != Yii::$app->user->id){
 
-            throw new \yii\web\NotFoundHttpException();
-
-        }
-
-        return true;
+        throw new \yii\web\NotFoundHttpException();
 
     }
+    return true;
+
+}
     public function actionSetImage($id)
     {
         $model = new ImageUpload;

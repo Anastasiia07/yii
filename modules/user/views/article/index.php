@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\ArticleSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Articles';
+$this->title = 'My articles';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="article-index">
@@ -41,7 +41,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 }
             ],
-            //'tag',
+            'tag',
             //'viewed',
             //'topic_id',
             //'user_id',

@@ -34,16 +34,26 @@ AppAsset::register($this);
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
+
     ]);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
             ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'User', 'url' => ['/user/user']],
-            ['label' => 'Article', 'url' => ['/user/article']],
-            ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
-
+            //['label' => 'Contact', 'url' => ['/site/contact']],
+            ['label' => 'Users', 'url' => ['/admin/user'],
+                'visible' => !Yii::$app->user->isGuest && Yii::$app->user->identity->login == 'anastasiia@gmail.com'],
+            ['label' => 'Article', 'url' => ['/admin/article'],
+                'visible' => !Yii::$app->user->isGuest && Yii::$app->user->identity->login == 'anastasiia@gmail.com'],
+            ['label' => 'Comments', 'url' => ['/admin/comment'],
+                'visible' => !Yii::$app->user->isGuest && Yii::$app->user->identity->login == 'anastasiia@gmail.com'],
+            ['label' => 'Topic', 'url' => ['/admin/topic'],
+                'visible' => !Yii::$app->user->isGuest && Yii::$app->user->identity->login == 'anastasiia@gmail.com'],
+            ['label' => 'My profile', 'url' => ['/user/user'],
+                'visible' => !Yii::$app->user->isGuest],
+            ['label' => 'My articles', 'url' => ['/user/article'],
+                'visible' => !Yii::$app->user->isGuest],
+            ['label' => 'About', 'url' => ['/about']],
             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/auth/login']]
             ) : (

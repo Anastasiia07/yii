@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = 'Update';
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <?= $this->render('_form', [
+    <?= $this->render('_form1', [
         'model' => $model,
         'topics' => ArrayHelper::map(Topic::find()->all(),'id','name'),
     ]) ?>

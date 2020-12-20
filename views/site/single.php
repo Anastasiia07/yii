@@ -95,14 +95,6 @@ use yii\helpers\Url;
 
                                 <div class="comment-top">
 
-                                    <?php if (!Yii::$app->user->isGuest): ?>
-
-                                        <button class="replay btn pull-right" onclick="ShowReplay(this)"> Replay
-
-                                        </button>
-
-                                    <?php endif; ?>
-
                                     <h5><?= $comment->user->name; ?></h5>
 
                                     <p class="comment-date">
@@ -134,7 +126,13 @@ use yii\helpers\Url;
                                             <i class="fa fa-trash"></i>
 
                                         </button>
+                                        <?php if (!Yii::$app->user->isGuest): ?>
 
+                                            <button class="replay btn pull-right" onclick="ShowReplay(this)"> Replay
+
+                                            </button>
+
+                                        <?php endif; ?>
                                     </div>
 
                                     <?php \yii\widgets\ActiveForm::end() ?>

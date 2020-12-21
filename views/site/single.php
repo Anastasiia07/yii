@@ -1,6 +1,7 @@
 <?php
 use yii\helpers\Url;
 ?>
+
 <article class="post">
     <div class="post-content">
 
@@ -19,11 +20,27 @@ use yii\helpers\Url;
             <p></p>
             <p> <?= mb_strimwidth($article->description,0, 360, "..."); ?> </p>
 
-
             <div class="social-share">
 
                 <span class="social-share-title pull-left text-capitalize">By <?= $article->user->name; ?> On <?= $article->getDate(); ?></span>
+                <ul class="text-center pull-right">
 
+                    <li><a class="s-facebook"
+
+                           href="http://www.facebook.com/sharer.php?u=<?= Url::base('http'); ?>"><i
+
+                                    class="fa fa-facebook"></i></a></li>
+
+                    <li><a class="s-twitter" href="https://twitter.com/intent/tweet?url=<?= Url::base('http'); ?>"><i
+
+                                    class="fa fa-twitter"></i></a></li>
+
+                    <li><a class="s-google-plus" href="https://plus.google.com/share?url=<?= Url::base('http'); ?>"><i
+
+                                    class="fa fa-google-plus"></i></a></li>
+
+
+                </ul>
             </div>
 
         </div>

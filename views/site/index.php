@@ -139,5 +139,17 @@ $this->title = 'My Yii Application';
         <?php endforeach;?>
         </div>
     </aside>
+    <aside class="widget border pos-padding">
+        <h3 class="widget-title text-uppercase text-center">Topics</h3>
+        <ul>
+            <?php foreach ($topics as $topic):?>
+                <li>
+                    <a href="<?= Url::toRoute(['site/topic','id'=>$topic->id]);?>"><?= $topic->name?></a>
+                    <span class="post-count pull-right">  (<?= $topic->getArticles()->count(); ?>)</span>
+                </li>
+            <?php endforeach;?>
+
+        </ul>
+    </aside>
 </div>
 
